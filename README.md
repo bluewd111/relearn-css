@@ -10,3 +10,4 @@ Relearn CSS at
 
 - [Day 1](./100dayscss/day1/)
 - [Day 2](./100dayscss/day2/)
+- [Day 3](./100dayscss/day3/)
