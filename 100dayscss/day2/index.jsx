@@ -1,8 +1,8 @@
-const activeCss = (isOpen) => isOpen ? 'active' : '';
 
 function App() {
     const [noAnimationCss, setNoAnimationCss] = React.useState('no-animation');
     const [isOpen, setIsOpen] = React.useState(false);
+    const activeCss = React.useMemo(() => isOpen ? 'active' : '', [isOpen])
     const handleClick = () => {
         setIsOpen(!isOpen);
         setNoAnimationCss(''); // 最初だけ no-animation がついていればいいので、常に空にする動き
@@ -11,7 +11,7 @@ function App() {
     return (
         <div className="frame">
             <div className="center">
-                <button className={"menu-icon " + activeCss(isOpen)} onClick={handleClick}>
+                <button className={"menu-icon " + activeCss} onClick={handleClick}>
                     <div className={"line-1 " + noAnimationCss}></div>
                     <div className={"line-2 " + noAnimationCss}></div>
                     <div className={"line-3 " + noAnimationCss}></div>
