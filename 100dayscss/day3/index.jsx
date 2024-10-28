@@ -1,6 +1,19 @@
 
 function App() {
-    return <h1>Day 3</h1>
+    return (
+        <div className="frame">
+            <div className="center">
+                <div className="circle">
+                    <div className="sky"></div>
+                    <div className="sun"></div>
+                    <div className="side-left"></div>
+                    <div className="side-right"></div>
+                    <div className="shadow"></div>
+                    <div className="ground"></div>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 const container = document.getElementById('root');
