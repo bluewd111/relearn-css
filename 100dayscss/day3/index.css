@@ -49,11 +49,68 @@
     height: 34px;
     border-radius: 50%; /** 円を作ってる */
     background: #FFEF00;
-    /** 左上の頂点座標から x 分右へ、 y 分下へ、rotateの中心座標を移動する */
+    /**
+    transform-origin は、50% 50% が初期値。これを中心にrotateが行われる。
+    回転軸をx方向に+50%動かすなら、 100% 50% のように指定する
+
+    transform-origin を指定しない場合 sun-goes-down を適用しても色味しか変わらない。
+    rotateは機能しているが、円がその場で回転しているだけなので変化がないようにみえる。
+    transform-origin で回転軸を変更することで、円が左・上・右と移動するようになる。
+    */
+    /* transform-origin: 50% 100%; → このくらいにしておくと、小さく移動するのが確認できる */
     transform-origin: 50% 400%;
 		animation: sun-goes-down 4s var(--cubic-bezier) infinite;
   }
+
+  .side-left {
+		position: absolute;
+		top: 67px;
+		left: 35px;
+		height: 57px;
+		width: 116px;
+		background: #F4F4F4;
+	  clip-path: polygon(0% 100%, 100% 100%, 50% 0%);
+		animation: pyramide-shading 4s var(--cubic-bezier) infinite;
+	}
+
+  .side-right {
+		position: absolute;
+		top: 67px;
+		left: 93px;
+		height: 57px;
+		width: 58px;
+		background: #DDDADA;
+	  clip-path: polygon(30% 100%, 100% 100%, 0% 0%);
+		animation: pyramide-shading 4s var(--cubic-bezier) infinite reverse;
+	}
+
+  .shadow {
+		position: absolute;
+		z-index: 2;
+		top: 124px;
+		left: -80px;
+		height: 30px;
+		width: 360px;
+		background: rgba(0,0,0,0.2);
+		transform-origin: 50% 0%;
+	  clip-path: polygon(115px 0%, 231px 0%, 80% 100%);
+		animation: shadow-on-the-floor 4s var(--cubic-bezier) infinite;
+	}
+
+  .ground {
+		position: absolute;
+		z-index: 1;
+    /** 下端、左右端を0、これにheightを指定することで長方形を作る */
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 56px;
+		background: #F0DE75;
+		animation: fading-sand 4s var(--cubic-bezier) infinite;
+	}
+
 }
+
 
 @keyframes sky-turns-black {
   0% {
@@ -91,5 +148,66 @@
   100% {
 		background: #F57209;
     transform: rotate(70deg); /** 98度回転した状態から、更に70度回転して画面外へ */
+  }
+}
+
+@keyframes pyramide-shading {
+  0% {
+    background: #272C34;
+  }
+	
+	30% {
+		background: #F4F4F4;
+	}
+	
+	70% {
+		background: #DDDADA;
+	}
+
+  100% {
+    background: #272C34;
+  }
+}
+
+@keyframes shadow-on-the-floor {
+  0% {
+		transform: scaleY(0);
+	  clip-path: polygon(115px 0%, 231px 0%, 100% 100%);
+  }
+	
+	30% {
+		transform: scaleY(1);
+	  clip-path: polygon(115px 0%, 231px 0%, 80% 100%);
+	}
+	
+	55% {
+		transform: scaleY(.4);
+	}
+
+	75% {
+		transform: scaleY(1);
+	}
+
+  100% {
+		transform: scaleY(0);
+	  clip-path: polygon(115px 0%, 231px 0%, 0% 100%);
+  }
+}
+
+@keyframes fading-sand {
+  0% {
+    background: #272C34;
+  }
+	
+	30% {
+		background: #F0DE75;
+	}
+	
+	70% {
+		background: #F0DE75;
+	}
+
+  100% {
+    background: #272C34;
   }
 }
