@@ -1,8 +1,13 @@
-
 function App() {
-    return <h1>Day 4</h1>
+    return (
+        <div className="frame">
+            <div className="dot-1"></div>
+            <div className="dot-2"></div>
+            <div className="dot-3"></div>
+        </div>
+    );
 }
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
 root.render(<App />);
