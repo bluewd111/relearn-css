@@ -14,3 +14,4 @@ Relearn CSS at
 - [Day 2](https://bluewd111.github.io/relearn-css/100dayscss/day2/)
 - [Day 3](https://bluewd111.github.io/relearn-css/100dayscss/day3/)
 - [Day 4](https://bluewd111.github.io/relearn-css/100dayscss/day4/)
+- [Day 5](https://bluewd111.github.io/relearn-css/100dayscss/day5/)
